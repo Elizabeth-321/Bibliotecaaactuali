@@ -1,0 +1,5 @@
+com\example\bibliotecaduoc\service\LibroService.class
+com\example\bibliotecaduoc\repository\LibroRepository.class
+com\example\bibliotecaduoc\controller\LibroController.class
+com\example\bibliotecaduoc\model\Libro.class
+com\example\bibliotecaduoc\BibliotecaduocApplication.class
