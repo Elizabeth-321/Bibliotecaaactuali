@@ -53,5 +53,13 @@ public class LibroService {
     public int totalLibrosV2() {
         //return libroRepository.totalLibros();
         return(int)libroRepository .count();
+
+
     }
+
+
+    public List<Libro> getPorAutor(String autor) {
+    return libroRepository.buscarPorAutor(autor);
 }
+    }
+

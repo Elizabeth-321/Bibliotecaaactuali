@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 
 @Repository
 
@@ -13,7 +16,37 @@ import java.util.List;
     //private List<Libro> listaLibros = new ArrayList<>();
 
 public interface LibroRepository extends JpaRepository<Libro,Integer> {
-  /*  public LibroRepository() {
+     // Consulta nativa simple
+    @Query(value = "SELECT * FROM libros WHERE id = :id", nativeQuery = true)
+    Libro findByIdCustom(@Param("id") int id);
+
+    @Query(value = "SELECT * FROM libros WHERE isbn = :isbn ", nativeQuery = true)
+    Libro findByIsbnCustom(@Param("isbn") String isbn);
+
+    @Query(value = "SELECT * FROM libros WHERE titulo = :titulo", nativeQuery = true)
+    Libro findByTituloCustom(@Param("titulo") String titulo);
+
+    @Query(value = "SELECT * FROM libros WHERE titulo = :editorial", nativeQuery = true)
+    Libro findByEditorialCustom(@Param("editorial") String editorial);
+
+    @Query(value = "SELECT * FROM libros WHERE fechaPublicacion = :FechaPublicacion", nativeQuery = true)
+    Libro findByFechaPublicacionCustom(@Param("fechaPublicacion") String fechaPublicacion);
+    
+    @Query(value = "SELECT * FROM libros WHERE Autor = :Autor", nativeQuery = true)
+    Libro findByAutorCustom(@Param("Autor") String Autor);
+    
+ 
+ 
+  // Consulta con JOINs nativos
+    @Query(value = "SELECT u.* FROM users u INNER JOIN roles r ON u.role_id = r.id WHERE r.name = ?1", 
+           nativeQuery = true)
+    List<Libro> findByRoleName(String roleName);
+ 
+ 
+ 
+ 
+ 
+    /*  public LibroRepository() {
         // Agregar libros por defecto
         listaLibros.add(new Libro(1, "9789569646638", "Fuego y Sangre", "Penguin Random House Grupo Editorial", 2018, "George R. R. Martin"));
         listaLibros.add(new Libro(2, "9789563494150", "Quique Hache: El Mall Embrujado y Otras Historias", "Sm Ediciones", 2014, "Sergio Gomez"));
