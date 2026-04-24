@@ -26,22 +26,21 @@ public interface LibroRepository extends JpaRepository<Libro,Integer> {
     @Query(value = "SELECT * FROM libros WHERE titulo = :titulo", nativeQuery = true)
     Libro findByTituloCustom(@Param("titulo") String titulo);
 
-    @Query(value = "SELECT * FROM libros WHERE titulo = :editorial", nativeQuery = true)
+    @Query(value = "SELECT * FROM libros WHERE editorial = :editorial", nativeQuery = true)
     Libro findByEditorialCustom(@Param("editorial") String editorial);
 
-    @Query(value = "SELECT * FROM libros WHERE fechaPublicacion = :FechaPublicacion", nativeQuery = true)
+    @Query(value = "SELECT * FROM libros WHERE fechaPublicacion = :fechaPublicacion", nativeQuery = true)
     Libro findByFechaPublicacionCustom(@Param("fechaPublicacion") String fechaPublicacion);
     
-    @Query(value = "SELECT * FROM libros WHERE Autor = :Autor", nativeQuery = true)
-    Libro findByAutorCustom(@Param("Autor") String Autor);
+    @Query(value = "SELECT * FROM libros WHERE Autor = :autor", nativeQuery = true)
+    Libro findByAutorCustom(@Param("Autor") String autor);
     
  
  
   // Consulta con JOINs nativos
-    @Query(value = "SELECT u.* FROM users u INNER JOIN roles r ON u.role_id = r.id WHERE r.name = ?1", 
-           nativeQuery = true)
-    List<Libro> findByRoleName(String roleName);
- 
+   @Query(value = "SELECT l1.* FROM libros l1 INNER JOIN libros l2 ON l1.autor = l2.autor WHERE l2.autor = :autor",
+       nativeQuery = true)
+List<Libro> findLibrosMismoAutor(@Param("autor") String autor);
  
  
  

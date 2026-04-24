@@ -57,9 +57,10 @@ public class LibroService {
 
     }
 
-
-    public List<Libro> getPorAutor(String autor) {
-    return libroRepository.buscarPorAutor(autor);
+public List<Libro> getPorAutor(String autor) {
+    return libroRepository.findByAutorContainingIgnoreCase(autor);
 }
+ 
+
     }
 
