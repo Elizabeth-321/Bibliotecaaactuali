@@ -17,23 +17,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface LibroRepository extends JpaRepository<Libro,Integer> {
      // Consulta nativa simple
-    @Query(value = "SELECT * FROM libros WHERE id = :id", nativeQuery = true)
-    Libro findByIdCustom(@Param("id") int id);
 
-    @Query(value = "SELECT * FROM libros WHERE isbn = :isbn ", nativeQuery = true)
-    Libro findByIsbnCustom(@Param("isbn") String isbn);
-
-    @Query(value = "SELECT * FROM libros WHERE titulo = :titulo", nativeQuery = true)
-    Libro findByTituloCustom(@Param("titulo") String titulo);
-
-    @Query(value = "SELECT * FROM libros WHERE editorial = :editorial", nativeQuery = true)
-    Libro findByEditorialCustom(@Param("editorial") String editorial);
-
-    @Query(value = "SELECT * FROM libros WHERE fechaPublicacion = :fechaPublicacion", nativeQuery = true)
-    Libro findByFechaPublicacionCustom(@Param("fechaPublicacion") String fechaPublicacion);
-    
-    @Query(value = "SELECT * FROM libros WHERE Autor = :autor", nativeQuery = true)
-    Libro findByAutorCustom(@Param("Autor") String autor);
+    @Query(value = "SELECT * FROM libros WHERE autor = :autor", nativeQuery = true)
+    Libro findByAutorCustom(@Param("autor") String autor);
     
  
  

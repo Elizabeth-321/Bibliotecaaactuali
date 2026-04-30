@@ -40,8 +40,11 @@ public class LibroController {
         return libroService.deleteLibro(id);
     }
 
-
-    @GetMapping("/total")
+    @GetMapping("/autor")
+    public List<Libro> buscarPorAutor(@RequestParam String autor) {
+        return libroService.getPorAutor(autor);
+    }
+        @GetMapping("/total")
     public int totalLibrosV2() {
         return libroService.totalLibrosV2();
     }
