@@ -21,6 +21,9 @@ public interface LibroRepository extends JpaRepository<Libro,Integer> {
     @Query(value = "SELECT * FROM libros WHERE autor = :autor", nativeQuery = true)
     Libro findByAutorCustom(@Param("autor") String autor);
     
+     @Query(value = "SELECT * FROM libros WHERE editorial = :editorial", nativeQuery = true)
+    List<Libro> selectPorEditorial(@Param("editorial") String editorial);
+
  
  
   // Consulta con JOINs nativos

@@ -56,7 +56,9 @@ public class LibroService {
 
 
     }
-
+public List<Libro> obtenerPorEditorial(String editorial){
+    return libroRepository.selectPorEditorial(editorial);
+    }
 public List<Libro> getPorAutor(String autor) {
     return libroRepository.findByAutorContainingIgnoreCase(autor);
 }
